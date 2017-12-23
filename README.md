@@ -5,7 +5,7 @@ Write down the Role ARN you just created
 IAM --> Users --> Select the User   
 Click Add inline policy (+ sign at the bottom right corner)   
 Enter the following lines in the JSON Tab   
-... 
+```
 {   
     "Version": "2012-10-17",   
     "Statement": [    
@@ -16,12 +16,12 @@ Enter the following lines in the JSON Tab
         }   
     ]   
 }   
-... 
+```
 You then add the following line in the terraform Launch Configuration:   
-... 
+```
 variable "iamrole" {   
   default = "myEC2FullRole"   
 }   
   
     iam_instance_profile        = "${var.iamrole}"   
-... 
+```
