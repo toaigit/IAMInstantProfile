@@ -1,4 +1,4 @@
-#    How to Grant an iAM Role to an EC2 Intance
+#    How to Grant an iAM Role for an EC2 Intance
 - Create a Role Name myEC2FullRole with permission of AmazonEC2FullAccess  
 - Write down the Role ARN you just created   
   - For Example: arn:aws:iam::306784208358:role/myEC2FullRole   
