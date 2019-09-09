@@ -1,27 +1,17 @@
 #    How to Grant an iAM Role for an EC2 Intance
-- Create a Role Name myEC2FullRole with permission of AmazonEC2FullAccess  
-- Write down the Role ARN you just created   
-  - For Example: arn:aws:iam::306784208358:role/myEC2FullRole   
-- IAM --> Users --> Select the User   
-  - Click Add inline policy (+ sign at the bottom right corner)   
-  - Enter the following lines in the JSON Tab   
-```
-{   
-    "Version": "2012-10-17",   
-    "Statement": [    
-        {    
-            "Effect": "Allow",   
-            "Action": "iam:*",   
-            "Resource": "arn:aws:iam::306784208358:role/myEC2FullRole"   
-        }   
-    ]   
-}   
+- Update the E2_Permissions file with appropriate
+- Run the IAMProfile.sh script to create the IAM Profile Role called EC2-Instance-Profile
 ```
 You then add the following line in the terraform Launch Configuration:   
 ```
+In the vars.tf file add the following lines to define the iamrole variable.
+
 variable "iamrole" {   
-  default = "myEC2FullRole"   
+  default = "EC2-Instance-Profile"   
 }   
   
-    iam_instance_profile        = "${var.iamrole}"   
+In the main.tf file add the iam_instance_profile line in the launch configuration section.
+
+    iam_instance_profile        = "${var.iamrole}"   OR
+    iam_instance_profile        = "EC2-Instance-Profile"   
 ```
